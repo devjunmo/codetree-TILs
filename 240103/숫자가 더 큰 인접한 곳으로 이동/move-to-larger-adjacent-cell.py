@@ -10,7 +10,7 @@ arr = []
 res = []
 
 for _ in range(n):
-    arr.append(list(map(int, input().split(' '))))
+    arr.append(list(map(int, input().strip().split(' '))))
 
 res.append(arr[r][c])
 
