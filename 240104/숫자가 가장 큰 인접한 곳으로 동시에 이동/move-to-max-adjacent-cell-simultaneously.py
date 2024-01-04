@@ -55,7 +55,7 @@ def check_and_move(i, j):
         nx = dx[d] + i
         ny = dy[d] + j
         # 정상범위이면서 현재 값보다 크고 최대값일때 해당 위치 기록
-        if 0<=nx<n and 0<=ny<n and arr[nx][ny] > arr[i][j] and arr[nx][ny] > max_val:
+        if 0<=nx<n and 0<=ny<n and arr[nx][ny] > max_val:
             max_val =arr[nx][ny]
             max_r = nx
             max_c = ny
@@ -69,7 +69,7 @@ def copy_vis_and_reset_nxt_vis():
     for i in range(n):
         for j in range(n):
             if vis_nxt[i][j] >= 2:
-                vis_nxt[i][j] = 1
+                vis_nxt[i][j] = 0
     vis = copy.deepcopy(vis_nxt)
     reset_vis_nxt()
 
