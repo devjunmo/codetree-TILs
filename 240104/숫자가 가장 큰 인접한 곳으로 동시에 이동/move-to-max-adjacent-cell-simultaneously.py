@@ -65,17 +65,18 @@ def check_and_move(i, j):
 
 # next_vis를 돌면서 2 이상인 요소들을 0으로 바꾸고 vis에 copy
 def copy_vis_and_reset_nxt_vis():
+    global vis
     for i in range(n):
         for j in range(n):
             if vis_nxt[i][j] >= 2:
-                vis_nxt[i][j] = 0
-    
+                vis_nxt[i][j] = 1
     vis = copy.deepcopy(vis_nxt)
     reset_vis_nxt()
 
 for _ in range(t):
     search_object_and_move()
     copy_vis_and_reset_nxt_vis()
+
 
 res = 0
 
