@@ -12,7 +12,7 @@ def permutation(lev):
         chk_pretty_num()
         return
     
-    for cn in range(1, n+1):
+    for cn in range(1, 5):
         cur_num.append(cn)
         permutation(lev+1)
         cur_num.pop()
@@ -33,7 +33,7 @@ def cond1_chk(idx):
     # 해당 인덱스부터 해당 값만큼의 범위를 체크
     for i in range(idx, idx+cur_val):
         # 연속된 수가 아니라면
-        if cur_num[i] != cur_val:
+        if i >= n or cur_num[i] != cur_val:
             return -1
     
     # 모두 연속된 수라면 다음 index 리턴
