@@ -19,7 +19,7 @@ def comb(lev, st_idx):
     
     for i in range(st_idx, n):
         ans.append(input_nums[i])
-        comb(lev+1, st_idx+1)
+        comb(lev+1, i+1)
         ans.pop()
 
 comb(0, 0)
