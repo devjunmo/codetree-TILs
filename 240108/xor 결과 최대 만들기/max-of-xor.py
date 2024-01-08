@@ -1,4 +1,5 @@
 n, m = tuple(map(int, input().strip().split(' ')))
+input_nums = list(map(int, input().strip().split(' ')))
 
 ans = []
 max_val = -1
@@ -6,7 +7,7 @@ max_val = -1
 def calc_xor(a, b):
     return a^b
 
-def comb(lev, st):
+def comb(lev, st_idx):
     global max_val
 
     if lev == m:
@@ -16,10 +17,10 @@ def comb(lev, st):
         max_val = max(max_val, cur_xor_val)
         return
     
-    for num in range(st, n):
-        ans.append(num)
-        comb(lev+1, st+1)
+    for i in range(st_idx, n):
+        ans.append(input_nums[i])
+        comb(lev+1, st_idx+1)
         ans.pop()
 
-comb(0, 1)
+comb(0, 0)
 print(max_val)
