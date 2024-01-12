@@ -2,7 +2,6 @@ from collections import deque
 
 n, m = tuple(map(int, input().strip().split(' ')))
 ans = False
-end_cnt = (n * m) - 1
 
 # 상하좌우
 dx = [-1, 1, 0, 0]
@@ -29,11 +28,9 @@ def is_goal(x, y):
         return False
 
 def bfs(st):
-    global end_cnt
     global ans
     dq = deque([st])
-    while end_cnt > 0:
-        end_cnt -= 1
+    while dq:
         cx, cy = dq.popleft()
         if is_goal(cx, cy):
             ans = True
