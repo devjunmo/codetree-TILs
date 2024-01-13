@@ -41,4 +41,7 @@ def bfs():
 
 bfs()
 
-print(dist_arr[n-1][m-1])
+if dist_arr[n-1][m-1] == MAX_VAL:
+    print(-1)
+else:
+    print(dist_arr[n-1][m-1])
