@@ -12,9 +12,10 @@ d[3]=3
 #2시작 차이 1이니까 d2+d1
 # 바텀업으로 진행
 
+
 for i in range(4,n+1):
     a=i-1
     b=i-2
     d[i]=d[a]+d[b]
 
-print(d[n])
+print(d[n]%10007)
