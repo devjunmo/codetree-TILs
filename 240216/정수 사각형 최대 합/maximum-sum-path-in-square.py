@@ -25,4 +25,8 @@ for i in range(1, n):
         dp[i][j] = max(dp[i-1][j]+arr[i][j], dp[i][j-1]+arr[i][j])
         res = max(res, dp[i][j])
 
-print(res)
+if res == -1:
+    print(dp[0][0])
+
+else:
+    print(res)
