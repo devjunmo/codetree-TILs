@@ -2,8 +2,7 @@ n = int(input())
 arr = list(map(int, input().strip().split(' ')))
 
 # k인덱스까지 왔을 때 길이가 최대여야 한다
-dp = [0] * n
-dp[0] = 1
+dp = [1] * n
 
 for i in range(1, n):
     # 현 인덱스보다 이전 것들 중
@@ -15,6 +14,7 @@ for i in range(1, n):
             continue
         if dp[j] + 1 > cur_dp_max:
             cur_dp_max = dp[j] + 1
-    dp[i] = cur_dp_max
+    if cur_dp_max > -1:
+        dp[i] = cur_dp_max
 
 print(max(dp))
