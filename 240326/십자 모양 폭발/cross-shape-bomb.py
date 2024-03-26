@@ -1,12 +1,3 @@
-"""
-4
-1 2 4 3
-3 2 2 3
-3 1 6 2
-4 5 4 4
-2 3
-"""
-
 n = int(input())
 arr = [
     list(map(int, input().strip().split(' ')))
@@ -39,23 +30,30 @@ for i in range(boom_cnt):
             arr[nx][ny] = 0
 
 
-# i-1 ~ 0 행까지에 대해 한칸씩 내리기 진행
-## 만약 올라가는데 두번 연속 0이면 break
-def grav(i, j):
-    cur_i = i
-    while cur_i > 0:
-        up_i = cur_i - 1
-        arr[cur_i][j] = arr[up_i][j]
-        arr[up_i][j] = 0
-        cur_i = up_i
-        
-
 # 배열을 돌며 중력을 적용시키기
-## 마지막행부터 돌면서, 0값을 발견하면, 중력 적용
-for i in range(n-1, -1, -1):
-    for j in range(n-1, -1, -1):
-        if arr[i][j] == 0:
-            grav(i, j)
+tr_lst = [] # 중력 적용 배열, 90도 시계방향으로 돌아있음
+for j in range(n):
+    tmp_lst = [0] * n
+    append_idx = 0
+    for i in range(n-1, -1, -1):
+        if arr[i][j] != 0:
+            tmp_lst[append_idx] = arr[i][j]
+            append_idx += 1
+    tr_lst.append(tmp_lst)
 
-for i in range(n):
-    print(*arr[i])
+
+# 반시계 90도 회전
+def rotate_90_counter_clockwise(matrix):
+    # 행렬 전치
+    transposed = list(zip(*matrix))
+
+    # 전치된 행렬의 각 열을 뒤집기
+    rotated = [list(row) for row in transposed][::-1]
+
+    return rotated
+
+
+rotated_matrix = rotate_90_counter_clockwise(tr_lst)
+
+for row in rotated_matrix:
+    print(*row)
