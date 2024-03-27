@@ -82,6 +82,10 @@ for r, d in cmds:
     r_idx = r-1
     simulate(r_idx, d)
 
+    # 방문 배열 초기화
+    for i in range(n):
+        vis[i] = False
+
 
 for row in arr:
     print(*row)
