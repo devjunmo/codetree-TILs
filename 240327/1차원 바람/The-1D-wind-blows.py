@@ -1,13 +1,3 @@
-"""
-6 5 1
-1 5 6 7 3
-5 3 2 5 4
-6 4 5 2 5
-2 6 1 0 5
-5 1 2 1 6
-4 2 5 2 8
-3 L
-"""
 n, m, q = tuple(map(int, input().strip().split(' ')))
 arr = [
     list(map(int, input().strip().split(' ')))
@@ -19,7 +9,6 @@ cmds = [
 ]
 
 vis = [False] * n  # 행 방문 체크
-
 
 # 전파 체크 후 전파 가능하면 재귀
 # 방문 안한 배열에 한해서 들어와야 함
