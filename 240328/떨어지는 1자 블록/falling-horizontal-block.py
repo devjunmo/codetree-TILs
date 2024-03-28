@@ -25,6 +25,9 @@ else:
         for j in range(start_col, end_col+1):
             arr[start_row][j] = 1
             arr[start_row-1][j] = 0
+        
+        if start_row == n-1:
+            break
 
     for row in arr:
         print(*row)
