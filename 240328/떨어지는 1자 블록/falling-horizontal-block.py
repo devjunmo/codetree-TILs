@@ -1,11 +1,3 @@
-"""
-4 3 1
-0 0 0 0
-0 0 0 1
-1 0 0 1
-1 1 1 1
-"""
-
 n, m, k = tuple(map(int, input().strip().split(' ')))
 arr = [
     list(map(int, input().strip().split(' ')))
@@ -17,8 +9,7 @@ start_row = 0
 is_finish = False
 
 if n == 1:
-    for row in arr:
-        print(*row)
+    print(1)
 else:
     while True:
         # 블럭조각 순회하며 밑에 있는 모든 블럭이 0인지 체크
