@@ -20,6 +20,8 @@ def calc_pon():
 
 def simulate(cur_turn):
     global max_val
+    calc_val = calc_pon()
+    max_val = max(calc_val, max_val)
     if cur_turn == n:
         calc_val = calc_pon()
         max_val = max(calc_val, max_val)
