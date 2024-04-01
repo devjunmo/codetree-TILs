@@ -28,22 +28,26 @@ def simulate(cnt, r, c):
     for i in range(1, 4):
         nx = r + (i * dx[d])
         ny = c + (i * dy[d])
-        # print(f'>>{nx}, {ny}')
+        #print(f'>>{nx}, {ny}')
         # 정상범위면서 방문 안한곳일 때 
         if 0 <= nx < n and 0 <= ny < n and not vis[nx][ny]:
             next_val = num_arr[nx][ny]
             cur_val = num_arr[r][c]
+            #print(f'next_val: {next_val}')
+            #print(f'cur_val: {cur_val}')
             # 만약 다음 방향의 값이 현재 값보다 같거나 작다면
             if next_val <= cur_val:
                 # max랑 비교 후 return
                 max_cnt = max(max_cnt, cnt)
                 vis[r][c] = False
-                return
+                #print('ff')
+                #return
             else:
+                #print('dd')
                 vis[nx][ny] = True
                 simulate(cnt+1, nx, ny)
         else:
-            # print('움직 x')
+            #print('움직 x')
             max_cnt = max(max_cnt, cnt)
             vis[r][c] = False
             #return
