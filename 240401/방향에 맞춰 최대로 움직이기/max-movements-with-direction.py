@@ -27,7 +27,7 @@ r, c = tuple(map(int, input().strip().split(' ')))
 r -= 1
 c -= 1
 
-max_cnt = -1
+max_cnt = 0
 
 def simulate(cnt, r, c):
     global max_cnt
