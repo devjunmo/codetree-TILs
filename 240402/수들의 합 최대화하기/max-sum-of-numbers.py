@@ -1,6 +1,6 @@
 n=int(input())
 arr=[
-    list(map(int, input().split(' ')))
+    list(map(int, input().strip().split(' ')))
     for _ in range(n)
 ]
 max_val=0
