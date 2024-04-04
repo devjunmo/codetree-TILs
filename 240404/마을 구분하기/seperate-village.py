@@ -33,7 +33,7 @@ for i in range(n):
             c_cnt+=1
             dfs(i, j)
             if p_cnt!=0:
-                ans.append(p_cnt)
+                ans.append(1)
             p_cnt=0
 
 ans=sorted(ans)
