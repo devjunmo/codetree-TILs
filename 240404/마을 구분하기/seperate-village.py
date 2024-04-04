@@ -32,7 +32,7 @@ for i in range(n):
         if not vis[i][j] and arr[i][j] == 1:
             c_cnt+=1
             dfs(i, j)
-            if p_cnt!=0:
+            if p_cnt==0:
                 ans.append(1)
             p_cnt=0
 
