@@ -18,19 +18,13 @@ dy=[0,1,0,-1]
 
 def dfs(cx, cy):
     global p_cnt
-    #can_move=False
     for d in range(4):
         nx=cx+dx[d]
         ny=cy+dy[d]
         if 0<=nx<n and 0<=ny<n and not vis[nx][ny] and arr[nx][ny]==1:
-            #can_move=True
             vis[nx][ny]=True
             p_cnt+=1
             dfs(nx,ny)
-    
-    #if not can_move:
-    #    ans.append(cnt)
-    #    return
 
 
 for i in range(n):
@@ -38,7 +32,8 @@ for i in range(n):
         if not vis[i][j] and arr[i][j] == 1:
             c_cnt+=1
             dfs(i, j)
-            ans.append(p_cnt)
+            if p_cnt!=0:
+                ans.append(p_cnt)
             p_cnt=0
 
 ans=sorted(ans)
