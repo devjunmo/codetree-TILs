@@ -34,7 +34,8 @@ for i in range(n):
             dfs(i, j)
             if p_cnt==0:
                 ans.append(1)
-            ans.append(p_cnt)
+            else:
+                ans.append(p_cnt)
             p_cnt=0
 
 ans=sorted(ans)
