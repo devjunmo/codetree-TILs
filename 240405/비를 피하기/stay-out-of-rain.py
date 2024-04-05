@@ -24,7 +24,7 @@ dy=[0,1,0,-1]
 
 
 def can_go(x,y):
-    if 0<=x<n and 0<=y<n and not vis[x][y] and (arr[x][y]==0 or arr[x][y]==3):
+    if 0<=x<n and 0<=y<n and not vis[x][y] and not arr[x][y]==1:
         return True
     else:
         return False
@@ -47,20 +47,19 @@ def bfs(sx,sy):
     return -1
 
 
-def reset_step():
+def reset():
     for i in range(n):
         for j in range(n):
             step[i][j]=0
+            vis[i][j]=False
 
 
 for i in range(n):
     for j in range(n):
         if arr[i][j] == 2:
-            #print(i, j)
             cur_cnt=bfs(i,j)
-            #print(cur_cnt)
             ans[i][j]=cur_cnt
-            reset_step()
+            reset()
 
 
 for row in ans:
