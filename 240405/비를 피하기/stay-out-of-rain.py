@@ -9,6 +9,11 @@ vis=[
     [False]*n
     for _ in range(n)
 ]
+step=[
+    [0]*n
+    for _ in range(n)
+]
+
 ans=[
     [0]*n
     for _ in range(n)
@@ -27,34 +32,36 @@ def can_go(x,y):
 
 def bfs(sx,sy):
     dq=deque([(sx,sy)])
-    vis[sx][sy]=False
-    cnt=0
+    vis[sx][sy]=True
     while dq:
-        cur_pos=dq.popleft()
-        cx=cur_pos[0]
-        cy=cur_pos[1]
+        cx, cy = dq.popleft()
         for d in range(4):
             nx=cx+dx[d]
             ny=cy+dy[d]
             if can_go(nx,ny):
                 dq.append((nx,ny))
                 vis[nx][ny]=True
-                
-    
-    if cnt == 0:
-        return -1
-    else:
-        return cnt
+                step[nx][ny] = step[cx][cy]+1
+                if arr[nx][ny]==3:
+                    return step[nx][ny]
+    return -1
 
+
+def reset_step():
+    for i in range(n):
+        for j in range(n):
+            step[i][j]=0
 
 
 for i in range(n):
     for j in range(n):
         if arr[i][j] == 2:
-            #ans[i][j]=-1
+            #print(i, j)
             cur_cnt=bfs(i,j)
+            #print(cur_cnt)
             ans[i][j]=cur_cnt
+            reset_step()
 
 
-for row in arr:
+for row in ans:
     print(*row)
