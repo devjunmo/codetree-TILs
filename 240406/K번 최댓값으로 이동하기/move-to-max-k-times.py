@@ -46,6 +46,7 @@ def bfs(sx, sy):
     start_val = arr[sx][sy]
     # print(f'>> start: {sx} {sy} / startVal: {start_val}')
     max_val = -1
+    finger_print = []
     while dq:
         cx, cy = dq.popleft()
         for d in range(4):
@@ -55,11 +56,15 @@ def bfs(sx, sy):
                 max_val = max(max_val, arr[nx][ny])
                 vis[nx][ny] = True
                 dq.append((nx, ny))
+                finger_print.append((nx, ny))
     
     if max_val != -1:
         # print(f'max_val: {max_val} // {coor_dict[max_val][0]}')
+        # print(f'finger print: {finger_print}')
         # maxval의 최우선 좌표 get 후 리턴
-        return coor_dict[max_val][0]
+        for i in range(len(coor_dict[max_val])):
+            if coor_dict[max_val][i] in finger_print:
+                return coor_dict[max_val][i]
 
     else:
         # 갈곳 없으면 -1 리턴
