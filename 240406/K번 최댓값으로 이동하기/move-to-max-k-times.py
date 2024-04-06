@@ -44,16 +44,20 @@ def bfs(sx, sy):
     dq = deque([(sx, sy)])
     vis[sx][sy] = True
     start_val = arr[sx][sy]
+    # print(f'>> start: {sx} {sy} / startVal: {start_val}')
     max_val = -1
     while dq:
-        cx, cy = dq.pop()
+        cx, cy = dq.popleft()
         for d in range(4):
             nx = cx + dx[d]
             ny = cy + dy[d]
             if can_go(nx, ny, start_val):
                 max_val = max(max_val, arr[nx][ny])
+                vis[nx][ny] = True
+                dq.append((nx, ny))
     
     if max_val != -1:
+        # print(f'max_val: {max_val} // {coor_dict[max_val][0]}')
         # maxval의 최우선 좌표 get 후 리턴
         return coor_dict[max_val][0]
 
