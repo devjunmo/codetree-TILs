@@ -32,10 +32,12 @@ dp = [0] * m
 """
 
 for day in range(1, m):
+  tmp_max = 0
   for c in range(n):
     st = cl_info[c][0]-1
     ed = cl_info[c][1]-1
     h = cl_info[c][2]
+    
     if st <= day <= ed:
       for c_past in range(n):
         st_p = cl_info[c_past][0]-1
@@ -43,6 +45,8 @@ for day in range(1, m):
         h_p = cl_info[c_past][2]
         if st_p <= day-1 <= ed_p:
           h_gap = abs(h_p-h)
-          dp[day] = max(dp[day], h_gap)
+          tmp_max = max(h_gap + dp[day-1], tmp_max)
+  dp[day] = tmp_max
 
 print(dp[m-1])
+# print(dp)
