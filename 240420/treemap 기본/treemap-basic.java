@@ -1,5 +1,6 @@
 import java.util.*;
 import java.io.*;
+import java.util.Map.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -27,6 +28,19 @@ public class Main {
                 }else{
                     //System.out.println(res);
                     bw.write(Integer.toString(res) + "\n");
+                }
+            }else if(cmd.equals("print_list")){
+                if(tm.isEmpty()){
+                    bw.write("None" + "\n");
+                }else{
+                    // bw.write("ddd");
+                    Iterator<Entry<Integer, Integer>> it = tm.entrySet().iterator();
+                    while(it.hasNext()){
+                        Entry<Integer, Integer> entry = it.next();
+                        bw.write(entry.getValue() + " ");
+                    }
+                    bw.write("\n");
+
                 }
             }
 
