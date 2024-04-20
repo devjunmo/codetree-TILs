@@ -16,9 +16,9 @@ public class Main {
         for(int num : arr){
             // bw.write(num + "\n");
             if(!tm.containsKey(num)){
-                tm.put(num, idx);
-                idx++;
+                tm.put(num, idx);  
             }
+            idx++;
         }
 
         for(Map.Entry<Integer, Integer> entry : tm.entrySet()){
