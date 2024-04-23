@@ -7,11 +7,11 @@ for _ in range(n):
     cmds = input().strip().split(' ')
     cmd = cmds[0]
     if cmd == 'push':
-        v = cmds[1]
-        heapq.heappush(pq, v)
+        v = int(cmds[1])
+        heapq.heappush(pq, -v)
     elif cmd == 'pop':
         pv = heapq.heappop(pq)
-        print(pv)
+        print(-pv)
     elif cmd == 'size':
         print(len(pq))
     elif cmd =='empty':
@@ -20,4 +20,4 @@ for _ in range(n):
         else:
             print(0)
     elif cmd =='top':
-        print(pq[0])
+        print(-pq[0])
