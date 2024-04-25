@@ -1,7 +1,7 @@
 import sys
 
 n,k=tuple(map(int,input().split(' ')))
-lst=list(map(int,input().split(' ')))
+lst=list(map(int,input().strip().split(' ')))
 
 sum_lst=[0]*n
 
