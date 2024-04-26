@@ -1,7 +1,7 @@
 import heapq
 
 n, q = tuple(map(int, input().split(' ')))
-lst = list(map(int, input().split(' ')))
+lst = list(map(int, input().strip().split(' ')))
 
 heapq.heapify(lst)
 
