@@ -15,8 +15,9 @@ for r_idx in range(n):
     # 합이 s 이상일 때 길이 잰다
     while sum_val >= s:
         min_len = min(min_len, r_idx-l_idx+1)
-        # l_idx 전진
-        l_idx+=1
-        sum_val -= arr[l_idx]
+        # l_idx 전진 (정상범위 일 때)
+        if l_idx + 1 < n:
+            l_idx+=1
+            sum_val -= arr[l_idx]
 
 print(min_len)
