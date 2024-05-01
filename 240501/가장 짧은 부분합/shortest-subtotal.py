@@ -19,4 +19,7 @@ for r_idx in range(n):
         sum_val -= arr[l_idx]
         l_idx+=1
 
-print(min_len)
+if min_len == 9999999:
+    print(-1)
+else:
+    print(min_len)
