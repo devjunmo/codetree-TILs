@@ -1,25 +1,18 @@
-n, m = tuple(map(int, input().split(' ')))
+n, m = map(int, input().split())
 
-A = list(map(int, input().strip().split(' ')))
-B = list(map(int, input().strip().split(' ')))
+A = list(map(int, input().strip().split()))
+B = list(map(int, input().strip().split()))
 
 a_idx = 0
+found = True  # 조금 더 직관적인 변수명
 
-is_seq = True
-
-for b_idx in range(m):
-    b_val = B[b_idx]
-    # a_idx가 정상범위면서 b_val이랑 같을 때까지 a_idx 증가
-    while a_idx<n and A[a_idx] != b_val:
+for b in B:
+    while a_idx < n and A[a_idx] != b:
         a_idx += 1
     
-    # 일치 한다면
-    if a_idx < n and A[a_idx] == b_val:
-        pass
-    else:
-        print('No')
-        is_seq = False
+    if a_idx == n:  # 더 이상 A에서 b를 찾을 수 없는 경우
+        found = False
         break
+    a_idx += 1  # 일치하는 경우 다음 인덱스에서 계속 검색
 
-if is_seq:
-    print('Yes')
+print("Yes" if found else "No")
