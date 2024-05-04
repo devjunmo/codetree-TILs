@@ -3,7 +3,7 @@ lst = []
 for _ in range(n):
     lst.append(int(input()))
 
-k_max = min(lst)
+k_max = max(lst)
 
 left = 1
 right = k_max
