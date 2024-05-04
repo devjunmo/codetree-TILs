@@ -8,7 +8,7 @@ k_max = min(lst)
 left = 1
 right = k_max
 
-max_val = -1
+max_val = 0
 
 while left <= right:
     cur_cnt = 0
