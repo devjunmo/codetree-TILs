@@ -37,13 +37,14 @@ for i in range(n):
                         # #   골드 cnt += 1
                         if arr[p][q] == 1:
                             gold_cnt += 1
+                            # print(gold_cnt)
                     
                     # if 골드 카운트 * m - 맨하탄 size > 0 일 때 
                     #    최대 금 갯수 갱신
-                    if (gold_cnt * m) - mining_cost > 0 and max_gold < gold_cnt:
+                    if (gold_cnt * m) - mining_cost >= 0 and max_gold < gold_cnt:
                         # max_gold = max(max_gold, gold_cnt)
                         max_gold = gold_cnt
-                        # print(f'i: {i}, j: {j}, p: {p}, q: {q}, k: {k}, gold: {gold_cnt}, mht: {mht_cnt}')
+                        # print(f'i: {i}, j: {j}, p: {p}, q: {q}, k: {k}, gold: {gold_cnt}, mining_cost: {mining_cost}')
 
 
 print(max_gold)
