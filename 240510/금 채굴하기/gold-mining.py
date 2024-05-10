@@ -24,7 +24,7 @@ max_gold = 0
 for i in range(n):
     for j in range(n):
         # 중앙 (i, j)에 대해 
-        for k in range(n):
+        for k in range(10*n):
             # k값이 주어졌을 때
             mining_cost = get_cost(k)
             gold_cnt = 0
