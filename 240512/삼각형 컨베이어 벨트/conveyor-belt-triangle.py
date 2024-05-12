@@ -22,15 +22,19 @@ def set_tmp(t_idx):
 
 
 def clean_tmp_arr():
+    global tmp_arr
     tmp_arr = []
 
 
-for sec in range(t):
+for _ in range(t):
     for row in grid:
         push_right(row)
     
     for tmp_i in range(3):
         set_tmp(tmp_i)
+
+    clean_tmp_arr()
+    # print(tmp_arr)
 
 
 for row in grid:
