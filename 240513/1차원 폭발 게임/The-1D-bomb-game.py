@@ -20,10 +20,10 @@ def find_boom():
             left = right # 위치 동기화
         right += 1
 
-        if right==len(b_arr) and lv==rv:
+        if right==len(b_arr) and lv==rv and right-left>=m:
             target_pos_lst.append((left,right-1))
     
-    # print(target_pos_lst)
+    #print(target_pos_lst)
     return target_pos_lst
 
 
