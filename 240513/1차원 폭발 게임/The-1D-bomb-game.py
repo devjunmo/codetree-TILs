@@ -19,6 +19,9 @@ def find_boom():
                 target_pos_lst.append((left, right-1))
             left = right # 위치 동기화
         right += 1
+
+        if right==len(b_arr) and lv==rv:
+            target_pos_lst.append((left,right-1))
     
     # print(target_pos_lst)
     return target_pos_lst
@@ -39,7 +42,7 @@ def boom(target_pos_lst):
     for b in b_arr:
         if b != -1:
             after_arr.append(b)
-    b_arr = after_arr
+    b_arr = after_arr.copy()
     return 1
 
 
