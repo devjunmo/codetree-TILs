@@ -1,9 +1,11 @@
 """
-3
+5
 1 1
-.#.
-#..
-...
+.....
+#####
+.....
+.....
+.....
 
 """
 n = int(input().strip())
@@ -58,7 +60,7 @@ def is_right_wall():
     nxt_dir = get_nxt_dir(cur_dir, 1)
     nx = x + dx[nxt_dir]
     ny = y + dy[nxt_dir]
-    if map_arr[nx][ny] == '#':
+    if 0 <= nx < n and 0 <= ny < n and map_arr[nx][ny] == '#':
         return True
     else:
         return False
@@ -68,7 +70,7 @@ def is_right_wall():
 def is_front_wall():
     nx = x + dx[cur_dir]
     ny = y + dy[cur_dir]
-    if map_arr[nx][ny] == '#':
+    if 0 <= nx < n and 0 <= ny < n and map_arr[nx][ny] == '#':
         return True
     else:
         return False
