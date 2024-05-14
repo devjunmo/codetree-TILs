@@ -7,6 +7,15 @@
 .....
 .....
 
+
+5
+2 2
+#####
+.....
+##...
+##...
+.....
+
 """
 n = int(input().strip())
 x, y = tuple(map(int, input().strip().split(' ')))
@@ -26,6 +35,12 @@ map_arr = [
     list(input().strip())
     for _ in range(n)
 ]
+
+vis_arr = [
+    [False] * n
+    for _ in range(n)
+]
+vis_arr[x][y] = True
 
 
 # 시계: 1, 반시계: -1
@@ -56,7 +71,7 @@ def can_go():
 
 
 # 현재 격자 & 방향 기준 오른쪽에 벽이 있는지 확인
-def is_right_wall():
+def is_right_wall(cur_dir, x, y):
     nxt_dir = get_nxt_dir(cur_dir, 1)
     nx = x + dx[nxt_dir]
     ny = y + dy[nxt_dir]
@@ -78,20 +93,21 @@ def is_front_wall():
 
 # 방향 계산
 ## -> 오른쪽에 벽이 있으면서 앞에 벽이 있다면 1 리턴 (반시계로 틀어야 함)
-## -> 오른쪽에 벽이 있으면서 앞에 벽이 없다면 2 리턴  (전진)
-## -> 오른쪽에 벽이 없으면서 앞에 벽이 있다면 0 리턴 (시계방향으로 틀어야 함)
-## -> 오른쪽에 벽이 없으면서 앞에 벽이 없다면 -1 리턴 (움직이지 못함. -1 출력 후 종료)
+## -> 오른쪽에 벽이 있으면서 앞에 벽이 없고,                           
+### -> 이동했을 기준 오른쪽에 벽이 있다면 2 리턴 (단순 전진)
+### -> 이동했을 기준 오른쪽에 벽이 없다면 3 리턴 (전진 - 시계 - 전진)
 def calc_dir():
-    if is_right_wall():
+    if is_right_wall(cur_dir, x, y):
         if is_front_wall():
             return 1
         else:
-            return 2
-    else:
-        if is_front_wall():
-            return 0
-        else:
-            return -1
+            nx = x + dx[cur_dir]
+            ny = y + dy[cur_dir]
+            if is_right_wall(cur_dir, nx, ny):
+                return 2
+            else:
+                return 3
+            
 
 # 맵 밖으로 나가면 게임 종료
 def is_end():
@@ -104,27 +120,64 @@ def is_end():
 def move():
     global mv_cnt, x, y
     mv_cnt += 1
-    x = x + dx[cur_dir]
-    y = y + dy[cur_dir]
-
+    nx = x + dx[cur_dir]
+    ny = y + dy[cur_dir]
+    
+    # 방문한곳을 또 간다면 뺑뺑이라서 -1리턴하고 끝내야함
+    if 0<=nx<n and 0<=ny<n and vis_arr[nx][ny]:
+        return -1
+    
+    x = nx
+    y = ny
+    if 0<=nx<n and 0<=ny<n:
+        vis_arr[x][y] = True
+    
+    if is_end():
+        print(mv_cnt)
+        return 0
+    
+    return 1
+    
 
 def simulate():
     while True:
+        # print(f'cur_dir: {cur_dir}')
+        # print(f'x: {x}, y: {y}')
         # 방향 결정
         res_code = calc_dir()
-        if res_code == -1:
-            print(-1)
-            return
-        elif res_code == 1:
+        if res_code == 1:
             change_dir(-1)
             continue
         elif res_code == 2:
-            move()
-            if is_end():
-                print(mv_cnt)
+            mv_code = move()
+            if mv_code == -1:
+                 print(-1)
+                 return
+        elif res_code == 3:
+            # 전진
+            mv_code = move()
+            if mv_code == -1:
+                # print(*vis_arr, sep='\n')
+                # print(f'mv_cnt: {mv_cnt}')
+                # print(f'cur_dir: {cur_dir}')
+                # print('ddd')
+                print(-1)
                 return
-        elif res_code == 0:
+            if mv_code == 0:
+                return
+            # 시계
             change_dir(1)
-            continue
+            
+            # 전진
+            mv_code = move()
+            if mv_code == -1:
+                # print(*vis_arr, sep='\n')
+                # print(f'mv_cnt: {mv_cnt}')
+                # print(f'cur_dir: {cur_dir}')
+                # print('ddd')
+                print(-1)
+                return
+            if mv_code == 0:
+                return
     
 simulate()
