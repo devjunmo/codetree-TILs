@@ -132,12 +132,17 @@ def move():
 
 def simulate():
     while True:
+        # print(f'x: {x}, y: {y}')
+        # print(f'mv_cnt: {mv_cnt}')
+        # print(f'cur_dir: {cur_dir}')
+        wall_cnt = 0
         for td in range(4):
             nx = x + dx[td]
             ny = y + dy[td]
-            if 0<=nx<n and 0<=ny<n and map_arr[nx][ny] != '#':
-                break
-            # 갇힌경우
+            if 0<=nx<n and 0<=ny<n and map_arr[nx][ny] == '#':
+                wall_cnt += 1
+        # 갇힌경우
+        if wall_cnt == 4:
             print(-1)
             return    
         
