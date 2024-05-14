@@ -1,29 +1,3 @@
-"""
-5
-1 1
-.....
-#####
-.....
-.....
-.....
-
-
-5
-2 2
-#####
-.....
-##...
-##...
-.....
-
-
-3
-1 1
-...
-#.#
-.#.
-
-"""
 n = int(input().strip())
 x, y = tuple(map(int, input().strip().split(' ')))
 x-=1
@@ -43,12 +17,17 @@ map_arr = [
     for _ in range(n)
 ]
 
-# vis_arr = [
-#     [False] * n
-#     for _ in range(n)
-# ]
-# vis_arr[x][y] = True
+vis_dict = {} # key: (x, y, cur_dict) val: T/F
+vis_arr = [
+    [
+        [False] * n
+        for _ in range(n)
+    ]
+    for _ in range(4)
+]
 
+# print(vis_arr)
+vis_arr[cur_dir][x][y] = True
 
 # 시계: 1, 반시계: -1
 def get_nxt_dir(cd, rot):
@@ -130,14 +109,19 @@ def move():
     nx = x + dx[cur_dir]
     ny = y + dy[cur_dir]
     
-    # # 방문한곳을 또 간다면 뺑뺑이라서 -1리턴하고 끝내야함
-    # if 0<=nx<n and 0<=ny<n and vis_arr[nx][ny]:
-    #     return -1
+    # 방문한곳을 또 간다면 뺑뺑이라서 -1리턴하고 끝내야함
+    # print('ttttt')
+    # print(f'nx: {nx}, ny: {ny}')
+    # print(vis_arr)
+    if 0<=nx<n and 0<=ny<n and vis_arr[cur_dir][nx][ny]:
+        return -1
     
     x = nx
     y = ny
-    # if 0<=nx<n and 0<=ny<n:
-    #     vis_arr[x][y] = True
+    if 0<=nx<n and 0<=ny<n:
+        # print('ddddd')
+        # print(cur_dir)
+        vis_arr[cur_dir][nx][ny] = True
     
     if is_end():
         print(mv_cnt)
@@ -148,15 +132,20 @@ def move():
 
 def simulate():
     while True:
-        if mv_cnt > 100000000:
+        for td in range(4):
+            nx = x + dx[td]
+            ny = y + dy[td]
+            if 0<=nx<n and 0<=ny<n and map_arr[nx][ny] != '#':
+                break
+            # 갇힌경우
             print(-1)
-            return
-        # print(f'cur_dir: {cur_dir}')
-        # print(f'x: {x}, y: {y}')
+            return    
+        
         # 방향 결정
         res_code = calc_dir()
         if res_code == 1:
             change_dir(-1)
+            vis_arr[cur_dir][x][y] = True
             continue
         elif res_code == 2:
             mv_code = move()
@@ -177,6 +166,7 @@ def simulate():
                 return
             # 시계
             change_dir(1)
+            vis_arr[cur_dir][x][y] = True
             
             # 전진
             mv_code = move()
