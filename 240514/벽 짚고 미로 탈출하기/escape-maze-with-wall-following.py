@@ -16,6 +16,13 @@
 ##...
 .....
 
+
+3
+1 1
+...
+#.#
+.#.
+
 """
 n = int(input().strip())
 x, y = tuple(map(int, input().strip().split(' ')))
@@ -36,11 +43,11 @@ map_arr = [
     for _ in range(n)
 ]
 
-vis_arr = [
-    [False] * n
-    for _ in range(n)
-]
-vis_arr[x][y] = True
+# vis_arr = [
+#     [False] * n
+#     for _ in range(n)
+# ]
+# vis_arr[x][y] = True
 
 
 # 시계: 1, 반시계: -1
@@ -123,14 +130,14 @@ def move():
     nx = x + dx[cur_dir]
     ny = y + dy[cur_dir]
     
-    # 방문한곳을 또 간다면 뺑뺑이라서 -1리턴하고 끝내야함
-    if 0<=nx<n and 0<=ny<n and vis_arr[nx][ny]:
-        return -1
+    # # 방문한곳을 또 간다면 뺑뺑이라서 -1리턴하고 끝내야함
+    # if 0<=nx<n and 0<=ny<n and vis_arr[nx][ny]:
+    #     return -1
     
     x = nx
     y = ny
-    if 0<=nx<n and 0<=ny<n:
-        vis_arr[x][y] = True
+    # if 0<=nx<n and 0<=ny<n:
+    #     vis_arr[x][y] = True
     
     if is_end():
         print(mv_cnt)
@@ -141,6 +148,9 @@ def move():
 
 def simulate():
     while True:
+        if mv_cnt > 100000000:
+            print(-1)
+            return
         # print(f'cur_dir: {cur_dir}')
         # print(f'x: {x}, y: {y}')
         # 방향 결정
