@@ -1,3 +1,6 @@
+import sys
+input = sys.stdin.readline
+
 t = int(input().strip())
 
 dir_idx = {"U": 0, "D": 1, "L": 2, "R": 3}
@@ -65,6 +68,7 @@ for _ in range(t):
     previous_states = set()
     while True:
         state = tuple(sorted(pos_dict.items()))
+        print(state)
         if state in previous_states:
             break
         previous_states.add(state)
