@@ -62,7 +62,7 @@ for _ in range(t):
         y = int(y)
         pos_dict[(x-1,y-1)] = dir_idx[d]
 
-    while sec < 2*n:
+    while sec < 3*n:
         # print(pos_dict)
         simulate()
         sec += 1
