@@ -62,9 +62,13 @@ for _ in range(t):
         y = int(y)
         pos_dict[(x-1,y-1)] = dir_idx[d]
 
-    while sec < n*n:
-        # print(pos_dict)
+    previous_states = set()
+    while True:
+        state = tuple(sorted(pos_dict.items()))
+        if state in previous_states:
+            break
+        previous_states.add(state)
         simulate()
-        sec += 1
+        # sec += 1
 
     print(len(pos_dict))
