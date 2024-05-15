@@ -68,7 +68,7 @@ for _ in range(t):
     previous_states = set()
     while True:
         state = tuple(sorted(pos_dict.items()))
-        print(state)
+        # print(state)
         if state in previous_states:
             break
         previous_states.add(state)
