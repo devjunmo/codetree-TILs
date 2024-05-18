@@ -41,15 +41,19 @@ while cur_idx <= 1000:
     tmp_lst = []
     remain_lst = []
     rl = get_range_line()
+    # print(rl)
     if rl:
         rx, ry = rl
         for line in line_lst:
             cx, cy = line
-            if rx <= cx and cy <= ry:
+            if rx <= cx <= ry or rx <= cy <= ry:
                 tmp_lst.append(line)
             else:
                 remain_lst.append(line)
 
+        # print(tmp_lst)
+        # print(remain_lst)
+        line_lst = remain_lst.copy()
         tmp_lst.sort(key=lambda x:x[1])
         pick_y = tmp_lst[0][1]
         cur_idx = pick_y + 1
