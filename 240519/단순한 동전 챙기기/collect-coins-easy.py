@@ -17,6 +17,7 @@ S 1 2 3 E
 """
 
 from itertools import combinations
+import sys
 
 n = int(input().strip())
 arr = [
