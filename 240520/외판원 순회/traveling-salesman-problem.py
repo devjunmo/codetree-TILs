@@ -12,7 +12,7 @@ point_lst = [i for i in range(n)]
 vis_case = list(permutations(point_lst, n))
 
 def calc(case_lst):
-    case_lst = [1] + case_lst + [1]
+    case_lst = [0] + case_lst + [0]
     sum_v = 0
     for i in range(len(case_lst)-1):
         p1 = case_lst[i]
