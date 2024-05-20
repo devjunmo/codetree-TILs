@@ -7,9 +7,9 @@ adj_lst = [
     for _ in range(n)
 ]
 
-point_lst = [i for i in range(n)]
+point_lst = [i for i in range(1,n)]
 
-vis_case = list(permutations(point_lst, n))
+vis_case = list(permutations(point_lst, n-1))
 
 def calc(case_lst):
     case_lst = [0] + case_lst + [0]
@@ -25,6 +25,7 @@ min_val = sys.maxsize
 
 for cs in vis_case:
     val = calc(list(cs))
+    #print(cs)
     min_val = min(min_val, val)
 
 print(min_val)
