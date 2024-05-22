@@ -1,5 +1,6 @@
 from itertools import combinations
 from collections import deque
+import copy
 
 n,k,m=tuple(map(int,input().split(' ')))
 grid=[
@@ -27,10 +28,11 @@ for i in range(n):
             stone_pos.append((i,j))
 
 rm_stones_lst=list(combinations(stone_pos,m))
+#print(rm_stones_lst)
 
 def bfs(cur_map, st_pos):
     global max_v
-    steps=0
+    steps=1
     dq = deque([])
     sx,sy=st_pos
     vis[sx][sy]=True
@@ -69,7 +71,7 @@ def remove_stone(cur_map, rm_stones):
 max_v=-1
 
 for rm_stones in rm_stones_lst:
-    cur_map=grid.copy()
+    cur_map=copy.deepcopy(grid)
     remove_stone(cur_map,rm_stones)
     for st_pos in start_pos:
         v= bfs(cur_map, st_pos)
