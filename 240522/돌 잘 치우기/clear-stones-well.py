@@ -73,9 +73,14 @@ max_v=-1
 for rm_stones in rm_stones_lst:
     cur_map=copy.deepcopy(grid)
     remove_stone(cur_map,rm_stones)
+    cur_space=0
     for st_pos in start_pos:
-        v= bfs(cur_map, st_pos)
-        max_v=max(max_v,v)
-        reset_vis()
+        sx,sy=st_pos
+        if not vis[sx][sy]:
+            v= bfs(cur_map, st_pos)
+            cur_space+=v
+    
+    max_v=max(max_v,cur_space)
+    reset_vis()
 
 print(max_v)
