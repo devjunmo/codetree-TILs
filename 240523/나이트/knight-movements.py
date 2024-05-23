@@ -37,7 +37,10 @@ def bfs():
                 dq.appendleft((nx,ny))
                 dist[nx][ny]=cur_dist+1
                 
-
-
-bfs()
+if r1 == r2 and c1==c2:
+    print(0)
+    sys.exit(0)
+else:
+    bfs()
+    
 print(-1)
