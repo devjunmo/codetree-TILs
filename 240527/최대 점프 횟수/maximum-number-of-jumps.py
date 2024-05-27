@@ -15,10 +15,11 @@ if n == 1:
     print(0)
     sys.exit(0)
 
-for i in range(2, n):
+for i in range(1, n):
     for j in range(i):
         if arr[j] != 0 and arr[j] + j >= i and dp[i] < dp[j] + 1:
-            dp[i] = dp[j] + 1
+            if j == 0 or dp[j] != 0:
+                dp[i] = dp[j] + 1
 
-# print(max(dp))
-print(dp)
+print(max(dp))
+# print(dp)
