@@ -18,7 +18,9 @@ for comp in arr:
         continue
     v=k-comp
     if comp==v:
-        cnt+=len(list(combinations(d[comp],2)))
+        #cnt+=len(list(combinations(d[comp],2)))
+        clen=len(d[comp])
+        cnt+=int((clen*(clen-1)/2))
         for idx in d[comp]:
             vis[idx]=True
         continue
