@@ -61,9 +61,9 @@ for i in range(q):
         n1=node_lst[i].prev
         n2=node_lst[i].next
         if n1 is not None:
-            v1=n1
+            v1=n1.node_numb
         if n2 is not None:
-            v2=n2
+            v2=n2.node_numb
         print(f'{v1} {v2}')
 
 res=[]
