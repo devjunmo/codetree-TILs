@@ -21,6 +21,8 @@ for q in range(Q):
 for k in range(1, P+1):
     for i in range(1, N+1):
         for j in range(1, N+1):
+            if dist[i][k] == MAX_INT or dist[k][j] == MAX_INT:
+                continue
             nxt_dst = dist[i][k] + dist[k][j]
             if dist[i][j] > nxt_dst:
                 dist[i][j] = nxt_dst
