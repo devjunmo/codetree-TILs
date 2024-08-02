@@ -14,4 +14,8 @@ def simul(idx, cur_step):
         simul(idx+cs, cur_step+1)
 
 simul(0, 0)
-print(min_step)
+
+if min_step == 999:
+    print(-1)
+else:
+    print(min_step)
