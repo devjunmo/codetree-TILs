@@ -1,3 +1,5 @@
+import copy
+
 t = int(input().strip())
 
 dir_idx = {"U": 0, "D": 1, "L": 2, "R": 3}
@@ -53,6 +55,7 @@ def simulate():
 
 for _ in range(t):
     pos_dict = {}
+    init_pos = copy.deepcopy(pos_dict)
     next_pos_dict = {}
     sec = 0
 
@@ -67,5 +70,7 @@ for _ in range(t):
         # print(pos_dict)
         simulate()
         sec += 1
+        if pos_dict == init_pos:
+            break
 
     print(len(pos_dict))
