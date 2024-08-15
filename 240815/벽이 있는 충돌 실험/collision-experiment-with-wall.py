@@ -55,7 +55,6 @@ def simulate():
 
 for _ in range(t):
     pos_dict = {}
-    init_pos = copy.deepcopy(pos_dict)
     next_pos_dict = {}
     sec = 0
 
@@ -66,11 +65,9 @@ for _ in range(t):
         y = int(y)
         pos_dict[(x-1,y-1)] = dir_idx[d]
 
-    while sec < 3*n:
+    while sec < 2*n:
         # print(pos_dict)
         simulate()
         sec += 1
-        if pos_dict == init_pos:
-            break
 
     print(len(pos_dict))
