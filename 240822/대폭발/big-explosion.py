@@ -34,8 +34,8 @@ def get_new_pos(time, pos_tup):
     cx = pos_tup[0]
     cy = pos_tup[1]
     for d in range(4):
-        nx = cx + dx[d]
-        ny = cy + dy[d]
+        nx = cx + dx[d]*move_size
+        ny = cy + dy[d]*move_size
         if is_range(nx, ny):
             res.append((nx, ny))
 
