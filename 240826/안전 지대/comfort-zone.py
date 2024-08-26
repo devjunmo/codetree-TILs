@@ -7,7 +7,7 @@ arr = [
 
 # 인덱스: 높이 값: 위치 리스트
 h_pos = [
-    [] for _ in range(n*m+1)
+    [] for _ in range(101)
 ]
 
 
@@ -43,7 +43,7 @@ def bfs(x, y, vis):
                 vis[nx][ny] = True
 
 
-for k in range(1, n+1):
+for k in range(1, 101):
     vis = [
         [False] * m for _ in range(n)
     ]
