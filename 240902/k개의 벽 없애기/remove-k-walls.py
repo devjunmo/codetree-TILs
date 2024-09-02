@@ -36,7 +36,7 @@ wall_pos_combs = list(combinations(wall_pos, k))
 # 3. 벽 원복하기
 
 def is_range(x, y, vis):
-    if 0<=x<n and 0<=y<n and vis[x][y] == 0:
+    if 0<=x<n and 0<=y<n and arr[x][y] != 1 and vis[x][y] == 0:
         return True
     else:
         return False
@@ -59,7 +59,7 @@ def bfs():
                 dq.append((nx, ny))
                 dist[nx][ny] = dist[cx][cy] + 1
 
-
+    return -2
 
 min_steps = MAX_SIZE
 
@@ -70,11 +70,17 @@ for wall_pos_cases in wall_pos_combs:
         arr[wx][wy] = 0
     
     steps = bfs()
-    min_steps = min(min_steps, steps)
+    if steps == -2:
+        pass
+    else:
+        min_steps = min(min_steps, steps)
 
     # 벽 원복하기
     for wall_pos in wall_pos_cases:
         wx, wy = wall_pos
         arr[wx][wy] = 1
 
-print(min_steps)
+if min_steps == MAX_SIZE:
+    print(-1)
+else:
+    print(min_steps)
